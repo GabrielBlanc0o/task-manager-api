@@ -21,3 +21,26 @@ controller/ -> aqui viven  los endpoints , esta es la puerta de entrada a las pe
 > Veamos el flujo de estos 3 de manera mas didactica
 
 HTTP REQUEST --> Controller --> Service --> Model --> Base de Datos
+
+
+En el path, src/main/java/com/gabrielblanco/taskmanager/model
+
+Inicializamos la estructura del proyecto en el archivo >>> Task.java
+
+Valores necesarios:
+
+@Entity --> Le dice a JPA que esta clase es es una tabla EN LA BASE DE DATOS
+
+@Table(name = "tasks") --> esto define el nombre exacto en la tabla en
+
+PostgreSQL, sin esto la tabla se llamaria como la clase en mayuscula , esto la hace
+
+mas explicita y limpia
+
+@Id --> le dice a JPA cual campo es la llave primaria de la tabla
+
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+--> le dice que el id se genera automaticamente en la base de datos, de forma
+
+incremental, yo nunca le asigno el id de una tarea manualmente, eso lo hace la base de datos sola.
