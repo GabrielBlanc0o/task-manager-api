@@ -51,4 +51,18 @@ public class TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
+    }
+
+    public Task updateTask(Long id, Task updatedTask) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
+        task.setTitle(updatedTask.getTitle());
+        task.setDescription(updatedTask.getDescription());
+        task.setCompleted(updatedTask.isCompleted());
+        return taskRepository.save(task);
+    }
 }

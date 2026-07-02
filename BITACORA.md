@@ -77,8 +77,22 @@ Primero el paquete , tambien usaremos listas, y dos importaciones llamando a la 
 
 nuestro constructor parametrizado para llamar a taskRepository, como pensamos no podemos instanciar taskRepository como un objeto porque no es una clase es una interfaz por eso esta como un "variable".
 
-Creamos 4 metodos  , el primero de tipo Lista y q usa a Task por sus atributos variables, para obtener todas las tareas con el metodo q nos da Spring ".findAll()" , de tipo lista para mostrar todo,  para crear tareas seria de tipo Task tanto el tipo del metodo como el parametro de entrada , con taskRepository para instanciar el metodo .save() y dentro la variable q recibira el dato a guardar 
+Creamos 4 metodos  , el primero de tipo Lista y q usa a Task por sus atributos variables, para obtener todas las tareas con el metodo q nos da Spring ".findAll()" , de tipo lista para mostrar todo,  para crear tareas seria de tipo Task tanto el tipo del metodo como el parametro de entrada , con taskRepository para instanciar el metodo .save() y dentro la variable q recibira el dato a guardar
 
 El metodo mas complejo entre "" , es para marcar una tarea como completada, de tipo Task y recibe el id osea la llave primaria para marcarla como completada, instanciamos la clase Task como objeto,  y junto a los metodos de spring gracias a la variable taskRepository y el metodo .findById() y la variable de entrada de el metodo , junto a .orElseThrow(() -> new RuntimeException("Tarea no encontrada")); esto lo que hace es que el metodo actua como un condicional ya que si encuentra el id lo busca y Ok, si no arroja esa excepcion , si no se cumple esa excepcion la variable del objeto mas el metodo .setCompleted(true) se marca con el setter como true, y devuelve con taskRepository y el metodo .save() la variable q recibio si existe
 
 El ultimo metodo no devuelve nada solo procesa, es para eliminar tareas , solo busca por el Id y con el metodo spring .deleteById() mas el id lo borra, aqui quizas podriamos tambien agregar condicional , por ahora no.
+
+### Creacion de nuestro controlador para nuestro nuevo endPoint
+
+Iniciamos importanto el paquete del controlador como todos los anteriores archivos, luego importamos nuestro Task y TaskService, y aparte con Spring usaremos para peticiones HTTP Autowired, para instanciar el servicio como variable NO objeto, luego list para instanciar la clase Task y poder manipularla.
+
+@RestController -> Le dice a Spring que esto no es de tipo HTML response si no como JSON
+
+@RequestMapping(ENDPOINT) -> prefijo de la ruta URL
+
+@GetMapping y @PostMapping -> son verbos HTTP para obtener respuestas de tipo GET o POST
+
+@PathVariable Long id -> Usa el id sobre el endpoint de la url existente para poder manipularlo y hacer la operacion que necesite hacer.
+
+@RequestBody Task task -> toma el JSON que le mando al body y Spring lo convierte automaticamente en un objeto Task , para volverlo manipulable junto a los metodos del serivicio.
