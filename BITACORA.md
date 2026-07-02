@@ -22,7 +22,6 @@ controller/ -> aqui viven  los endpoints , esta es la puerta de entrada a las pe
 
 HTTP REQUEST --> Controller --> Service --> Model --> Base de Datos
 
-
 En el path, src/main/java/com/gabrielblanco/taskmanager/model
 
 Inicializamos la estructura del proyecto en el archivo >>> Task.java
@@ -44,3 +43,22 @@ mas explicita y limpia
 --> le dice que el id se genera automaticamente en la base de datos, de forma
 
 incremental, yo nunca le asigno el id de una tarea manualmente, eso lo hace la base de datos sola.
+
+
+## 02 Julio 2026 — Día 2
+
+* Creamos 'TaskRepository.java' en la carpeta 'repository/'
+
+- '@Repository' -> le dice a Spring que esta interfaz maneja acceso a datos
+
+
+- Extendemos 'JpaRepository<Task,Long>' donde:
+  - 'Task' -> es la entidad que maneja, apunta a la tabla tasks
+  - 'Long' -> el tipo de dato del ID, debe coincidir con el declarado en Task.java
+-
+- La interfaz esta vacia pero Spring genera automaticamente:
+  - 'findAll()' -> trae todas las tareas
+  - 'findById(id)' -> trae una tarea por id
+  - 'save(task)' -> crea o actualiza una tarea
+  - 'deleteById(id)' -> borra una tarea
+- Esto que en Java puro tomaria horas con SQL, JpaRepository lo da gratis
