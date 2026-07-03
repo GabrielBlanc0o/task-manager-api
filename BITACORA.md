@@ -28,7 +28,7 @@ Inicializamos la estructura del proyecto en el archivo >>> Task.java
 
 Valores necesarios:
 
-@Entity --> Le dice a JPA que esta clase es es una tabla EN LA BASE DE DATOS
+@Entity --> Le dice a JPA que esta clase es una tabla EN LA BASE DE DATOS
 
 @Table(name = "tasks") --> esto define el nombre exacto en la tabla en
 
@@ -38,11 +38,7 @@ mas explicita y limpia
 
 @Id --> le dice a JPA cual campo es la llave primaria de la tabla
 
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-
---> le dice que el id se genera automaticamente en la base de datos, de forma
-
-increm  ental, yo nunca le asigno el id de una tarea manualmente, eso lo hace la base de datos sola.
+@GeneratedValue(strategy = GenerationType.IDENTITY) --> le dice que el id se genera automaticamente en la base de datos, de forma incremental, yo nunca le asigno el id de una tarea manualmente, eso lo hace la base de datos sola.
 
 ## 02 Julio 2026 — Día 2
 
