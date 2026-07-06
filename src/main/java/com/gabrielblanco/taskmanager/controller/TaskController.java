@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
+
 public class TaskController {
 
     @Autowired
@@ -17,6 +18,7 @@ public class TaskController {
 
     @GetMapping
     public List<Task> getAllTasks() {
+        
         return taskService.getAllTasks();
     }
 
